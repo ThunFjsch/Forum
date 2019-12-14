@@ -1,0 +1,38 @@
+<div class="nav-page" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="nav-bar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="forum-name-container">
+      <h1 class="forum-name">Responsive App</h1>
+    </div>
+    <div class="search"></div>
+    <!--search-->
+    <div class="login-signup">
+      <button mat-raised-button color="accent">Login</button>
+      <button mat-raised-button color="accent">Signup</button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="nav-side"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="over"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list>
+        <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{
+          nav
+        }}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <p *ngFor="let content of fillerContent">{{ content }}</p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
